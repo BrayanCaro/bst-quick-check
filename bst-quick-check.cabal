@@ -58,6 +58,7 @@ test-suite bst-quick-check-test
   main-is: Spec.hs
   other-modules:
       BST.OperationsSpec
+      Examples.ListSpec
       Paths_bst_quick_check
   hs-source-dirs:
       test

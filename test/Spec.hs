@@ -1,2 +1,9 @@
+import Test.Hspec
+
+import qualified Examples.ListSpec
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = hspec $ do
+  describe "Examples.ListSpec" Examples.ListSpec.spec
+
+
