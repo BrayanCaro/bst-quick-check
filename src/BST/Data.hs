@@ -9,3 +9,4 @@ data BST k v =
     Branch (BST k v) k v (BST k v)
     deriving (Eq, Show, Generic)
 
+
