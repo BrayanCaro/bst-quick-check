@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.35.1.
+-- This file has been generated from package.yaml by hpack version 0.35.2.
 --
 -- see: https://github.com/sol/hpack
 
@@ -25,6 +25,8 @@ source-repository head
 
 library
   exposed-modules:
+      BST.Data
+      BST.Operations
       Lib
   other-modules:
       Paths_bst_quick_check
@@ -32,7 +34,9 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      QuickCheck
+    , base >=4.7 && <5
+    , hspec
   default-language: Haskell2010
 
 executable bst-quick-check-exe
@@ -43,19 +47,26 @@ executable bst-quick-check-exe
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      QuickCheck
+    , base >=4.7 && <5
     , bst-quick-check
+    , hspec
   default-language: Haskell2010
 
 test-suite bst-quick-check-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      BST.Generator.BadGeneratorSpec
+      BST.Generator.CorrectGeneratorSpec
+      Examples.ListSpec
       Paths_bst_quick_check
   hs-source-dirs:
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      QuickCheck
+    , base >=4.7 && <5
     , bst-quick-check
+    , hspec
   default-language: Haskell2010
