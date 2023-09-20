@@ -13,7 +13,12 @@ import BST.Data
 
 insert :: Ord k => k -> v -> BST k v -> BST k v
 insert k v Leaf = Branch Leaf k v Leaf
-insert k v (Branch t1 k' v' t2) = Branch (insert k v t1) k' v' t2
+insert k v (Branch t1 k' v' t2)
+  | k < k' = Branch (insert k v t1) k' v' t2
+  | k > k' = Branch t1 k' v' (insert k v t2)
+  -- Si las llaves son iguales: la última inserción gana
+  -- (como dice en las notas, pag. 68)
+  | otherwise = Branch t1 k v t2
 
 find :: Ord k => k -> BST k v -> Maybe v
 find _ Leaf = Nothing
