@@ -65,7 +65,7 @@ prop_Valid t = valid t
 
   Dado que nuestros árboles generados son inválidos entonces
   podemos considerar que solo usaremos los que sean válidos,
-  pero es ineficiente, y no solo eso, si no que tampoco pasa.
+  pero es ineficiente.
 -}
 prop_DeleteValid :: Key -> Tree -> Property
 prop_DeleteValid k t =  valid t ==> valid (delete k t)
