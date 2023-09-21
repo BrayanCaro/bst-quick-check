@@ -59,6 +59,7 @@ test-suite bst-quick-check-test
   main-is: Spec.hs
   other-modules:
       BST.Metamorphic.BadSpec
+      BST.Metamorphic.CorrectSpec
       BST.Postconditions.PostSpec
       BST.Validity.BadGeneratorSpec
       BST.Validity.CorrectGeneratorSpec

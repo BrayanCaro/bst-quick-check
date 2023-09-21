@@ -6,6 +6,7 @@ module BST.Operations (insert
   , toList
   , valid
   , find
+  , (~=~)
   ) where
 
 import BST.Data
@@ -27,6 +28,7 @@ find k (Branch t1 k' v t2)
   | k < k' = find k t1
   | otherwise = Just v
 
+-- TODO Verificar si es valido remover una rama entera
 delete :: Ord k => k -> BST k v -> BST k v
 delete _ Leaf = Leaf
 delete k (Branch t1 k' v t2)
@@ -58,7 +60,7 @@ keys (Branch t1 k _ t2) = [k] ++ (keys t1) ++ (keys t2)
 
 toList :: BST k v -> [(k ,v)]
 toList Leaf = []
-toList (Branch t1 k v t2) = [(k, v)] ++ (toList t1) ++ (toList t2)
+toList (Branch t1 k v t2) = (toList t1) ++ [(k, v)] ++ (toList t2)
 
 valid :: Ord k => BST k v -> Bool
 valid Leaf = True
@@ -67,3 +69,6 @@ valid (Branch l k _ r ) =
   valid r &&
   all (<k) (keys l) &&
   all (>k) (keys r)
+
+(~=~) :: (Eq k, Eq v) => (BST k v) -> (BST k v) -> Bool
+t1 ~=~ t2 = toList (t1) == toList (t2)
