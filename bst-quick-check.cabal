@@ -58,6 +58,7 @@ test-suite bst-quick-check-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      BST.Inductive.CorrectSpec
       BST.Metamorphic.BadSpec
       BST.Metamorphic.CorrectSpec
       BST.Postconditions.PostSpec

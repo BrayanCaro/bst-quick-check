@@ -6,6 +6,7 @@ import qualified BST.Validity.CorrectGeneratorSpec
 import qualified BST.Postconditions.PostSpec
 import qualified BST.Metamorphic.BadSpec
 import qualified BST.Metamorphic.CorrectSpec
+import qualified BST.Inductive.CorrectSpec
 
 main :: IO ()
 main = hspec $ do
@@ -15,6 +16,7 @@ main = hspec $ do
   describe "BST.Postconditions.Post" BST.Postconditions.PostSpec.spec
   describe "BST.Metamorphic.Bad" BST.Metamorphic.BadSpec.spec
   describe "BST.Metamorphic.Correct" BST.Metamorphic.CorrectSpec.spec
+  describe "BST.Inductive.Correct" BST.Inductive.CorrectSpec.spec
 
 
 
