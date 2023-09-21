@@ -1,13 +1,13 @@
 import Test.Hspec
 
 import qualified Examples.ListSpec
-import qualified BST.Generator.BadGeneratorSpec
-import qualified BST.Generator.CorrectGeneratorSpec
+import qualified BST.Validity.BadGeneratorSpec
+import qualified BST.Validity.CorrectGeneratorSpec
 
 main :: IO ()
 main = hspec $ do
   describe "Examples.ListSpec" Examples.ListSpec.spec
-  describe "BST.Generator.Bad" BST.Generator.BadGeneratorSpec.spec
-  describe "BST.Generator.Correct" BST.Generator.CorrectGeneratorSpec.spec
+  describe "BST.Validity.Bad" BST.Validity.BadGeneratorSpec.spec
+  describe "BST.Validity.Correct" BST.Validity.CorrectGeneratorSpec.spec
 
 
