@@ -7,7 +7,7 @@ import qualified BST.Generator.CorrectGeneratorSpec
 main :: IO ()
 main = hspec $ do
   describe "Examples.ListSpec" Examples.ListSpec.spec
-  describe "BST.DataSpec.Generator.Bad" BST.Generator.BadGeneratorSpec.spec
-  describe "BST.DataSpec.Generator.Correct" BST.Generator.CorrectGeneratorSpec.spec
+  describe "BST.Generator.Bad" BST.Generator.BadGeneratorSpec.spec
+  describe "BST.Generator.Correct" BST.Generator.CorrectGeneratorSpec.spec
 
 

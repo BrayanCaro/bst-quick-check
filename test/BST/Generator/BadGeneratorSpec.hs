@@ -9,6 +9,8 @@ import BST.Operations
 
 spec :: Spec
 spec = do
+  it "el borrado de árboles genera árboles validos, es ineficiente, pero es una forma de resolverlo" $ do
+    property $ prop_DeleteValid
   it "el árbol generado es válido" $ do
     property $ prop_Valid
   it "shrink genera arboles válidos cuando el árbol generado ya era válido" $ do
@@ -50,6 +52,16 @@ instance (Ord k, Arbitrary k, Arbitrary v) => Arbitrary (BST k v) where
 
 prop_Valid :: Tree -> Bool
 prop_Valid t = valid t
+
+{-
+  Ejemplo de uso de precondición.
+
+  Dado que nuestros árboles generados son inválidos entonces
+  podemos considerar que solo usaremos los que sean validos,
+  pero es ineficiente, y no solo eso, si no que tampoco pasa.
+-}
+prop_DeleteValid :: Key -> Tree -> Property
+prop_DeleteValid k t =  valid t ==> valid (delete k t)
 
 prop_ShrinkValid :: Tree -> Property
 prop_ShrinkValid t = valid t ==> filter (not . valid) (shrink t) === []

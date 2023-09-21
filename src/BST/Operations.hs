@@ -30,8 +30,8 @@ find k (Branch t1 k' v t2)
 delete :: Ord k => k -> BST k v -> BST k v
 delete _ Leaf = Leaf
 delete k (Branch t1 k' v t2)
-  | k > k' = Branch t1 k' v t2
-  | k < k' = Branch (delete k t1) k' v (delete k t2)
+  | k > k' = Branch t1 k v (delete k t2)
+  | k < k' = Branch (delete k t1) k' v t2
   | otherwise = Leaf
 
 union :: (Ord k) => BST k v -> BST k v -> BST k v
