@@ -50,9 +50,11 @@ prop_FindPostAbsent k t = find k (delete k t) === Nothing
   vale la pena agruparlas en una.
   Ya que la forma anterior nos obliga a definir las propiedades una
   por una, y caso por caso de forma exhaustiva, pero puede que no cumplamos
-  todos los casos para cualquier estructura (aunque para el tipo de dato Tree se
+  todos los casos para cualquier estructura.
+
+  Nota: Aunque para el tipo de dato Tree se
   pueden considerar solo esos dos casos y por eso son tan similares las dos propiedades
-  definidas previamente).
+  definidas previamente.
 -}
 prop_InsertDeleteComplete :: Key -> Tree -> Property
 prop_InsertDeleteComplete k t = case find k t of
