@@ -57,6 +57,7 @@ test-suite bst-quick-check-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      BST.Postconditions.PostSpec
       BST.Validity.BadGeneratorSpec
       BST.Validity.CorrectGeneratorSpec
       Examples.ListSpec

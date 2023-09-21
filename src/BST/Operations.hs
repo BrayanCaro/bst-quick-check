@@ -8,7 +8,6 @@ module BST.Operations (insert
   , find
   ) where
 
-import Control.Applicative ((<|>))
 import BST.Data
 
 insert :: Ord k => k -> v -> BST k v -> BST k v
@@ -23,8 +22,9 @@ insert k v (Branch t1 k' v' t2)
 find :: Ord k => k -> BST k v -> Maybe v
 find _ Leaf = Nothing
 find k (Branch t1 k' v t2)
-  | k > k' = Nothing
-  | k < k' = find k t1 <|> find k t2
+  -- | k > k' = Nothing
+  | k > k' = find k t2
+  | k < k' = find k t1
   | otherwise = Just v
 
 delete :: Ord k => k -> BST k v -> BST k v
