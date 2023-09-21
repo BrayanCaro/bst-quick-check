@@ -1,6 +1,6 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module BST.Generator.CorrectGeneratorSpec (spec) where
+module BST.Validity.CorrectGeneratorSpec (spec) where
 
 import Test.Hspec
 import Test.QuickCheck
@@ -9,6 +9,14 @@ import BST.Operations
 
 spec :: Spec
 spec = do
+  it "valida árbol nil" $ do
+    property $ prop_NilValid
+  it "valida árbol insert" $ do
+    property $ prop_InsertValid
+  it "valida árbol union" $ do
+    property $ prop_UnionValid
+  it "valida árbol delete" $ do
+    property $ prop_DeleteValid
   it "el árbol generado es válido" $ do
     property $ prop_Valid
   it "shrink genera arboles válidos cuando el árbol generado ya era válido" $ do
@@ -57,3 +65,21 @@ prop_Valid t = valid t
 -}
 prop_ShrinkValid :: Tree -> Property
 prop_ShrinkValid t = valid t ==> filter (not . valid) (shrink t) === []
+
+
+-- Verificación de árboles válidos generados por las operaciones
+-- Algunas verificaciones nos pueden dar un falso negativo
+-- como la unión, si los árboles generados no están bien formados, la unión
+-- no dará un árbol bien formado.
+-- Por eso validamos la generación de árboles en la parte previa.
+prop_NilValid :: Bool
+prop_NilValid = valid (nil :: Tree)
+
+prop_InsertValid :: Key -> Val -> Tree -> Bool
+prop_InsertValid k v t = valid (insert k v t)
+
+prop_DeleteValid :: Key -> Tree -> Bool
+prop_DeleteValid k t = valid (delete k t)
+
+prop_UnionValid :: Tree -> Tree -> Bool
+prop_UnionValid t t' = valid (union t t')

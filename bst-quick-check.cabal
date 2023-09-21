@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      BST.Arbitrary
       BST.Data
       BST.Operations
       Lib
@@ -57,8 +58,14 @@ test-suite bst-quick-check-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      BST.Generator.BadGeneratorSpec
-      BST.Generator.CorrectGeneratorSpec
+      BST.Inductive.CorrectSpec
+      BST.Metamorphic.BadSpec
+      BST.Metamorphic.CorrectSpec
+      BST.ModelBased.BadSpec
+      BST.ModelBased.CorrectSpec
+      BST.Postconditions.PostSpec
+      BST.Validity.BadGeneratorSpec
+      BST.Validity.CorrectGeneratorSpec
       Examples.ListSpec
       Paths_bst_quick_check
   hs-source-dirs:
