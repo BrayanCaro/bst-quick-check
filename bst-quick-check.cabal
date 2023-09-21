@@ -61,6 +61,8 @@ test-suite bst-quick-check-test
       BST.Inductive.CorrectSpec
       BST.Metamorphic.BadSpec
       BST.Metamorphic.CorrectSpec
+      BST.ModelBased.BadSpec
+      BST.ModelBased.CorrectSpec
       BST.Postconditions.PostSpec
       BST.Validity.BadGeneratorSpec
       BST.Validity.CorrectGeneratorSpec
