@@ -6,6 +6,7 @@ import Test.Hspec
 import Test.QuickCheck
 import BST.Data
 import BST.Operations
+import BST.Arbitrary ()
 import Control.Applicative ((<|>))
 
 spec :: Spec
@@ -22,12 +23,6 @@ spec = do
     property $ prop_FindPostPresent
   it "InsertDeleteComplete" $ do
     property $ prop_InsertDeleteComplete
-
-instance (Ord k, Arbitrary k, Arbitrary v) => Arbitrary (BST k v) where
-  arbitrary = do
-    items <- arbitrary
-    return $ foldr (uncurry insert) Leaf (items :: [(k,v)])
-  shrink = filter valid . genericShrink
 
 prop_InsertPost :: Key -> Val -> Tree -> Key -> Property
 prop_InsertPost k v t k'
