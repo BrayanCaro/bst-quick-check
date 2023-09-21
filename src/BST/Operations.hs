@@ -30,17 +30,21 @@ find k (Branch t1 k' v t2)
 delete :: Ord k => k -> BST k v -> BST k v
 delete _ Leaf = Leaf
 delete k (Branch t1 k' v t2)
-  | k > k' = Branch t1 k v (delete k t2)
+  | k > k' = Branch t1 k' v (delete k t2)
   | k < k' = Branch (delete k t1) k' v t2
   | otherwise = Leaf
 
 union :: (Ord k) => BST k v -> BST k v -> BST k v
 union t1 Leaf = t1
 union Leaf t2 = t2
+union (Branch t1 k1 v1 t1') t = union t1 $ union t1' $ insert k1 v1 t
+{-
+-- Imprementación erronea de union
 union (Branch t1 k1 v1 t1') (Branch t2 k2 v2 t2')
-  | k1 > k2 = Branch (Branch t2 k2 v2 t2') k1 v1  Leaf
-  | k2 > k1 = Branch (Branch t1 k1 v1 t1') k2 v2  Leaf
+  | k1 > k2 = Branch (union t1 (Branch t2 k2 v2 t2')) k1 v1 t1'
+  | k2 > k1 = Branch t1 k1 v1 (union t1' (Branch t2 k2 v2 t2'))
   | otherwise =  Branch t1 k1 v1 t1'
+-}
 
 nil :: BST k v
 nil = Leaf
