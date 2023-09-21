@@ -35,4 +35,5 @@ prop_UnionModel t t' =
 prop_FindModel :: Key -> Tree -> Property
 prop_FindModel k t = find k t === L.lookup k (toList t)
 
+deleteKey :: Eq a => a -> [(a, b)] -> [(a, b)]
 deleteKey k = filter ((/= k) . fst)

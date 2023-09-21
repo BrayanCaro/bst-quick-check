@@ -1,5 +1,3 @@
-{-# LANGUAGE ScopedTypeVariables #-}
-
 module BST.Postconditions.PostSpec (spec) where
 
 import Test.Hspec
